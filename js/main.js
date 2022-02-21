@@ -19,6 +19,10 @@ scorePlayerContainer.innerHTML = `${scorePlayer}`;
 scoreComputerContainer.innerHTML = `${scoreComputer}`;
 
 let result = document.querySelector(".result");
+let subtitle = document.querySelector(".subtitle");
+let reset = document.querySelector(".resetButton");
+
+reset.addEventListener("click", resetButtonPressed);
 
 function buttonPressed(e) {
     playerSelection = e.target.id;
@@ -49,28 +53,44 @@ function buttonPressed(e) {
         button.classList.add("disabled");
     }
 
-    setTimeout(function(){
-        imgPlayer.src = `img/wave.gif`;
-        imgComputer.src = `img/wave.gif`;
-        for (const button of buttons) {
-            button.classList.remove("disabled");
-        }
-        result.innerHTML = `Choose your weapon`;
-    },2000);
+    
+    if(scorePlayer == 5) {
+        result.innerHTML = `<span class="playerSelection">You win</span>!`;
+        subtitle.classList.add("hidden");
+        reset.classList.remove("hidden");
+    } else if(scoreComputer == 5) {
+        result.innerHTML = `<span class="computerSelection">Computer wins</span>!`;
+        subtitle.classList.add("hidden");
+        reset.classList.remove("hidden");
+    } else {
+        setTimeout(function(){
+            imgPlayer.src = `img/wave.gif`;
+            imgComputer.src = `img/wave.gif`;
+            for (const button of buttons) {
+                button.classList.remove("disabled");
+            }
+            result.innerHTML = `Choose your weapon`;
+        },2000);
+    }
 
     scorePlayerContainer.innerHTML = `${scorePlayer}`;
     scoreComputerContainer.innerHTML = `${scoreComputer}`;
-
-    sessionStorage.setItem("scorePlayer", scorePlayer);
-    sessionStorage.setItem("scoreComputer", scoreComputer);
 }
 
-let checksessionStorage = sessionStorage.getItem("scorePlayer");
-if(checksessionStorage) {
-    scorePlayer = sessionStorage.getItem("scorePlayer");
-    scoreComputer = sessionStorage.getItem("scoreComputer");
-    scorePlayer = parseInt(scorePlayer);
-    scoreComputer = parseInt(scoreComputer);
+function resetButtonPressed() {
+    subtitle.classList.remove("hidden");
+    reset.classList.add("hidden");
+
+    scorePlayer = 0;
+    scoreComputer = 0;
     scorePlayerContainer.innerHTML = `${scorePlayer}`;
     scoreComputerContainer.innerHTML = `${scoreComputer}`;
+
+    imgPlayer.src = `img/wave.gif`;
+    imgComputer.src = `img/wave.gif`;
+    for (const button of buttons) {
+        button.classList.remove("disabled");
+    }
+    result.innerHTML = `Choose your weapon`;
+
 }
