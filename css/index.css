@@ -78,6 +78,13 @@ main {
     cursor: pointer;
 }
 
+.buttonBackToLang {
+    font-size: 1.4rem;
+    cursor: pointer;
+    position: absolute;
+    bottom: 1rem;
+}
+
 .hidden {
     display: none;
 }
