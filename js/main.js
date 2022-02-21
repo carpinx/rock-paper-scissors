@@ -61,14 +61,14 @@ function buttonPressed(e) {
     scorePlayerContainer.innerHTML = `${scorePlayer}`;
     scoreComputerContainer.innerHTML = `${scoreComputer}`;
 
-    localStorage.setItem("scorePlayer", scorePlayer);
-    localStorage.setItem("scoreComputer", scoreComputer);
+    sessionStorage.setItem("scorePlayer", scorePlayer);
+    sessionStorage.setItem("scoreComputer", scoreComputer);
 }
 
-let checkLocalStorage = localStorage.getItem("scorePlayer");
-if(checkLocalStorage) {
-    scorePlayer = localStorage.getItem("scorePlayer");
-    scoreComputer = localStorage.getItem("scoreComputer");
+let checksessionStorage = sessionStorage.getItem("scorePlayer");
+if(checksessionStorage) {
+    scorePlayer = sessionStorage.getItem("scorePlayer");
+    scoreComputer = sessionStorage.getItem("scoreComputer");
     scorePlayer = parseInt(scorePlayer);
     scoreComputer = parseInt(scoreComputer);
     scorePlayerContainer.innerHTML = `${scorePlayer}`;
