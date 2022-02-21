@@ -1,4 +1,4 @@
-let options = ["rock", "paper", "scissors"];
+let options = ["Rock", "Paper", "Scissors"];
 
 let playerSelection;
 let computerSelection;
@@ -30,9 +30,9 @@ function buttonPressed(e) {
         // TIE
         result.innerHTML = `You both chose <span class="playerSelection">${playerSelection}</span>! It's a tie!`;
     } else if(
-        (playerSelection == "rock" && computerSelection == "scissors") ||
-        (playerSelection == "paper" && computerSelection == "rock") ||
-        (playerSelection == "scissors" && computerSelection == "paper")
+        (playerSelection == "Rock" && computerSelection == "Scissors") ||
+        (playerSelection == "Paper" && computerSelection == "Rock") ||
+        (playerSelection == "Scissors" && computerSelection == "Paper")
         ) {
         // WIN
         scorePlayer = scorePlayer + 1;
@@ -43,8 +43,8 @@ function buttonPressed(e) {
         result.innerHTML = `<span class="computerSelection">${computerSelection}</span> beats <span class="playerSelection">${playerSelection}</span>! Computer wins!`;
     }
 
-    imgPlayer.src = `img/${playerSelection}.gif`;
-    imgComputer.src = `img/${computerSelection}.gif`;
+    imgPlayer.src = `img/${playerSelection.toLowerCase()}.gif`;
+    imgComputer.src = `img/${computerSelection.toLowerCase()}.gif`;
     for (const button of buttons) {
         button.classList.add("disabled");
     }
