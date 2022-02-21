@@ -2,6 +2,12 @@ let options = ["Rock", "Paper", "Scissors"];
 
 let playerSelection;
 let computerSelection;
+let playerSelectionLang;
+let computerSelectionLang;
+
+let playerName = localStorage.getItem("playerName");
+let playerNameContainer = document.querySelector(".playerNameContainer");
+playerNameContainer.textContent = playerName;
 
 let buttons = document.querySelectorAll(".buttons img");
 for (const button of buttons) {
@@ -11,7 +17,7 @@ for (const button of buttons) {
 let imgPlayer = document.querySelector(".images__player");
 let imgComputer = document.querySelector(".images__computer");
 
-let scorePlayerContainer = document.querySelector(".scores__player span");
+let scorePlayerContainer = document.querySelector(".scores__player .playerScoreContainer");
 let scoreComputerContainer = document.querySelector(".scores__computer span");
 let scorePlayer = 0;
 let scoreComputer = 0;
@@ -19,6 +25,8 @@ scorePlayerContainer.innerHTML = `${scorePlayer}`;
 scoreComputerContainer.innerHTML = `${scoreComputer}`;
 
 let result = document.querySelector(".result");
+result.innerHTML = `<span class="playerSelection">${playerName}</span>, escolle a túa arma`;
+
 let subtitle = document.querySelector(".subtitle");
 let reset = document.querySelector(".resetButton");
 
@@ -30,9 +38,33 @@ function buttonPressed(e) {
     computerSelection = Math.floor(Math.random() * options.length);
     computerSelection = options[computerSelection];
 
+    switch (computerSelection) {
+      case "Rock":
+        computerSelectionLang = "Pedra";
+        break;
+      case "Paper":
+        computerSelectionLang = "Papel";
+        break;
+      case "Scissors":
+        computerSelectionLang = "Tesoiras";
+        break;
+    }
+
+    switch (playerSelection) {
+      case "Rock":
+        playerSelectionLang = "Pedra";
+        break;
+      case "Paper":
+        playerSelectionLang = "Papel";
+        break;
+      case "Scissors":
+        playerSelectionLang = "Tesoiras";
+        break;
+    }
+
     if(playerSelection == computerSelection) {
         // TIE
-        result.innerHTML = `You both chose <span class="playerSelection">${playerSelection}</span>! It's a tie!`;
+        result.innerHTML = `Ambos escollestes <span class="playerSelection">${playerSelectionLang}</span>! Empate!`;
     } else if(
         (playerSelection == "Rock" && computerSelection == "Scissors") ||
         (playerSelection == "Paper" && computerSelection == "Rock") ||
@@ -40,11 +72,11 @@ function buttonPressed(e) {
         ) {
         // WIN
         scorePlayer = scorePlayer + 1;
-        result.innerHTML = `<span class="playerSelection">${playerSelection}</span> beats <span class="computerSelection">${computerSelection}</span>! You win!`;
+        result.innerHTML = `<span class="playerSelection">${playerSelectionLang}</span> vence a <span class="computerSelection">${computerSelectionLang}</span>! <span class="playerSelection">${playerName}</span> gañou!`;
     } else {
         // LOSE
         scoreComputer = scoreComputer + 1;
-        result.innerHTML = `<span class="computerSelection">${computerSelection}</span> beats <span class="playerSelection">${playerSelection}</span>! Computer wins!`;
+        result.innerHTML = `<span class="computerSelection">${computerSelectionLang}</span> vence a <span class="playerSelection">${playerSelectionLang}</span>! A máquina gañou!`;
     }
 
     imgPlayer.src = `img/${playerSelection.toLowerCase()}.gif`;
@@ -55,11 +87,11 @@ function buttonPressed(e) {
 
     
     if(scorePlayer == 5) {
-        result.innerHTML = `<span class="playerSelection">You win</span>!`;
+        result.innerHTML = `<span class="playerSelection">${playerName} gañou o xogo</span>!`;
         subtitle.classList.add("hidden");
         reset.classList.remove("hidden");
     } else if(scoreComputer == 5) {
-        result.innerHTML = `<span class="computerSelection">Computer wins</span>!`;
+        result.innerHTML = `<span class="computerSelection">A máquina gañou o xogo</span>!`;
         subtitle.classList.add("hidden");
         reset.classList.remove("hidden");
     } else {
@@ -69,7 +101,7 @@ function buttonPressed(e) {
             for (const button of buttons) {
                 button.classList.remove("disabled");
             }
-            result.innerHTML = `Choose your weapon`;
+            result.innerHTML = `<span class="playerSelection">${playerName}</span>, escolle a túa arma`;
         },2000);
     }
 
@@ -91,6 +123,6 @@ function resetButtonPressed() {
     for (const button of buttons) {
         button.classList.remove("disabled");
     }
-    result.innerHTML = `Choose your weapon`;
+    result.innerHTML = `<span class="playerSelection">${playerName}</span>, escolle a túa arma`;
 
 }
