@@ -149,3 +149,13 @@ body {
 .divider .shape-fill {
     fill: #FF4E7C;
 }
+
+@media screen and (max-width: 768px) {
+    .buttons {
+        padding: 3rem 2rem;
+    }
+
+    .subheader h2 {
+        padding: 0 2rem;
+    }
+}
