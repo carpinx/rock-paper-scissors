@@ -9,7 +9,6 @@
 
 html {
     font-size: 62.5%;
-    overflow-x: hidden;
 }
 
 body {
@@ -40,11 +39,15 @@ body {
 
 .subheader h2 {
     font-size: 3.4rem;
+}
+
+.subheader h2 span.playerSelection {
     color: #FF4E7C;
 }
 
-.subheader h2 span {
-    color: #cf2854;
+.subheader h2 span.computerSelection {
+    color: #FF4E7C;
+    filter: hue-rotate(270deg);
 }
 
 .subheader h2::first-letter {
@@ -98,10 +101,15 @@ body {
     top: 35%;
     height: 40%;
     border-right: 3px solid #cf2854;
+    filter: hue-rotate(270deg);
 }
 
 .images__player {
     transform: scaleX(-1);
+}
+
+.images__computer {
+    filter: hue-rotate(270deg);
 }
 
 .buttons {

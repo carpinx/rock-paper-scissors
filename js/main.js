@@ -28,7 +28,7 @@ function buttonPressed(e) {
 
     if(playerSelection == computerSelection) {
         // TIE
-        result.innerHTML = `You both chose <span>${playerSelection}</span>! It's a tie!`;
+        result.innerHTML = `You both chose <span class="playerSelection">${playerSelection}</span>! It's a tie!`;
     } else if(
         (playerSelection == "rock" && computerSelection == "scissors") ||
         (playerSelection == "paper" && computerSelection == "rock") ||
@@ -36,11 +36,11 @@ function buttonPressed(e) {
         ) {
         // WIN
         scorePlayer = scorePlayer + 1;
-        result.innerHTML = `<span>${playerSelection}</span> beats <span>${computerSelection}</span>! You win!`;
+        result.innerHTML = `<span class="playerSelection">${playerSelection}</span> beats <span class="computerSelection">${computerSelection}</span>! You win!`;
     } else {
         // LOSE
         scoreComputer = scoreComputer + 1;
-        result.innerHTML = `<span>${computerSelection}</span> beats <span>${playerSelection}</span>! Computer wins!`;
+        result.innerHTML = `<span class="computerSelection">${computerSelection}</span> beats <span class="playerSelection">${playerSelection}</span>! Computer wins!`;
     }
 
     imgPlayer.src = `img/${playerSelection}.gif`;
