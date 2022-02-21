@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.header {
+    background: #FF4E7C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.header h1 {
+    color: white;
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.subheader {
+    text-align: center;
+    position: relative;
+    padding-top: 4rem;
+}
+
+.subheader h2 {
+    font-size: 3.4rem;
+    color: #FF4E7C;
+}
+
+.subheader h2 span {
+    color: #cf2854;
+}
+
+.subheader h2::first-letter {
+    text-transform: uppercase;
+}
+
+.subheader h3 {
+    font-size: 1.9rem;
+}
+
+.scoreBoard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.scoreBoard__container {
+    max-width: 400px;
+}
+
+.images, .scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    justify-items: center;
+}
+
+.scores__player, .scores__computer {
+    font-size: 2rem;
+}
+
+.images img {
+    max-width: 100%;
+    position: Relative;
+}
+
+.images::before {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: 35%;
+    height: 40%;
+    border-left: 3px solid #cf2854;
+}
+
+.images::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 35%;
+    height: 40%;
+    border-right: 3px solid #cf2854;
+}
+
+.images__player {
+    transform: scaleX(-1);
+}
+
+.buttons {
+    display: flex;
+    max-width: 100%;
+    padding-top: 3rem;
+    gap: 1rem;
+}
+
+.buttons img {
+    flex-grow: 1;
+    width: 33%;
+    border: 3px solid #FF4E7C;
+    border-radius: 3rem;
+    transition: transform .1s;
+    cursor: pointer;
+}
+
+.buttons img.disabled {
+    filter: grayscale(.5);
+    opacity: .5;
+    pointer-events: none;
+}
+
+.buttons img:hover {
+    transform: scale(1.1);
+}
+
+.divider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 9;
+}
+
+.divider svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 40px;
+}
+
+.divider .shape-fill {
+    fill: #FF4E7C;
+}
